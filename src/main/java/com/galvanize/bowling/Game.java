@@ -15,9 +15,14 @@ public class Game {
     }
 
     public int newRoll(int pins) {
-
-        if (frame == 10) {
+        System.out.println("frame: " + frame);
+        System.out.println("roll Number: " + rollNumber);
+        if (frame == 10 && pins == 10) {
             score += pins;
+            if (rollNumber < 3) {
+                score += pins;
+            }
+            rollNumber++;
         } else {
             // on first roll
             if (rollNumber == 1) {
@@ -44,7 +49,6 @@ public class Game {
                         frame++;
                     }
 
-
                 } else if (pins == 10) {
                     this.bonusCounter = 2;
                     if (strikes < 2) {
@@ -60,6 +64,7 @@ public class Game {
 
                     score += frameScore;
                     this.rollNumber = 1;
+                    frame++;
 
                 } else {
                     this.frameScore = pins;
@@ -68,7 +73,7 @@ public class Game {
                 // on second roll
             } else {
                 if (bonusCounter > 0) {
-                    this.frameScore = 2 * pins;
+                    this.frameScore += 2 * pins;
                     if (pins != 10) {
                         this.bonusCounter--;
                     }
@@ -82,16 +87,14 @@ public class Game {
                     bonusCounter++;
                 }
             }
-
-            System.out.println("frame: " + frame);
-            System.out.println("score: " + score);
-            System.out.println("frameScore: " + frameScore);
-            System.out.println("roll Number: " + rollNumber);
-            System.out.println("bonus Counter: " + bonusCounter);
-            System.out.println("strikes: " + strikes);
-            System.out.println("-------------------");
-
         }
+
+        System.out.println("score: " + score);
+        System.out.println("frameScore: " + frameScore);
+
+        System.out.println("bonus Counter: " + bonusCounter);
+        System.out.println("strikes: " + strikes);
+        System.out.println("-------------------");
         return 5;
     }
 }

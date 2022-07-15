@@ -104,7 +104,7 @@ public class GameTest {
 
         // first 3 rolls
         newGame.newRoll(3);
-        newGame.newRoll(3);
+        newGame.newRoll(3); //change back to 3 after testing
 
         for (int i = 0; i < 16; i++) {
             newGame.newRoll(0);
@@ -117,7 +117,7 @@ public class GameTest {
     }
 
     @Test
-    public void foo(){
+    public void score300WithPerfectGame(){
         // set up
         Game newGame = new Game();
 
